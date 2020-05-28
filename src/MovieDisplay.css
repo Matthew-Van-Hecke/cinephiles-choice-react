@@ -1,0 +1,61 @@
+/* .MovieDisplay{
+    width: 200px;
+    height: 300px;
+    position: relative;
+}
+.MovieDisplay-image{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    z-index: 5;
+    left: 0;
+}
+.MovieDisplay:hover .MovieDisplay-info{
+    display: block;
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+} */
+.MovieDisplay {
+    padding: 0;
+    width: unset;
+    height: unset;
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    border: 5px solid rgba(0,0,0,0);
+}
+.MovieDisplay-image {
+    object-position: center;
+    object-fit: fill;
+    width: 100%;
+    height: auto;
+    border: 8px solid #777777;
+    z-index: 5;
+    position: relative;
+    border-radius: 25px;
+}
+.MovieDisplay-info {
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgba(0, 0, 0, .5);
+    display: none;
+    position: relative;
+    top: 0;
+    border-radius: 25px;
+}
+.MovieDisplay:hover .MovieDisplay-info{
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+}
+/* .movie-poster-overlay div{
+    margin: 12px 12px 12px 12px;
+} */
