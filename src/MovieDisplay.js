@@ -20,8 +20,12 @@ class MovieDisplay extends Component {
             <div className="MovieDisplay">
                 <img className="MovieDisplay-image" src={movie.poster} alt={movie.title}></img>
                 <div className="MovieDisplay-info">
-                    <h5>Title: {movie.title}</h5>
-                    <h5>Director: {movie.director}</h5>
+                    <div>
+                        <h6>Title: {movie.title}</h6>
+                        <h6>Directed by: {movie.director}</h6>
+                        <h6>Genre(s): {movie.genre}</h6>
+                        <h6>Starring: {movie.actors}</h6>
+                    </div>
                 </div>
             </div>
         );
