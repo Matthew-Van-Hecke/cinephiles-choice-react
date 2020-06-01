@@ -24,7 +24,7 @@ class NominationsDisplay extends Component {
     render(){
         let nominations = this.props.nominations;
         return nominations.map(n =>
-            <div className="col-12 col-sm-6 col-md-4 col-lg-3"><MovieDisplay movie={n.movie} /></div>
+            <div className="col-12 col-sm-6 col-md-4 col-lg-3"><MovieDisplay nomination={n} /></div>
         );
     }
 }
