@@ -14,7 +14,7 @@ class MovieDisplay extends Component {
             <div className="MovieDisplay">
                 <img className="MovieDisplay-image" src={movie.poster} alt={movie.title}></img>
                 <div className="MovieDisplay-info">
-                    <div>
+                    <div className="MovieDisplay-text">
                         <h6>Nominee: {this.props.nomination.nominee}</h6>
                         <h6>Film: {movie.title}</h6>
                         <h6>Directed by: {movie.director}</h6>
