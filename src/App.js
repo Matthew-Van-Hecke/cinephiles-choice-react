@@ -1,12 +1,12 @@
 import React from 'react';
-import NominationsDisplay from './NominationsDisplay';
+import ExploreNominations from './ExploreNominations';
 import './App.css';
 
 function App() {
   return (
     <div className="App container">
       <div className="row">
-        <NominationsDisplay />
+        <ExploreNominations />
       </div>
 
     </div>
