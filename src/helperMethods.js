@@ -25,5 +25,13 @@ function groupByCriteria(array, criteria){
     }
     return dict;
 }
+function subGroupByCriteria(object, criteria){
+    let sorted = {};
+    let keys = Object.keys(object);
+    for (let i = 0; i < keys.length; i++){
+        sorted[keys[i]] = groupByCriteria(object[keys[i]], criteria);
+    }
+    return sorted;
+}
 
-export {reduceArrayToCountDictionary, groupByCriteria};
+export {reduceArrayToCountDictionary, groupByCriteria, subGroupByCriteria};

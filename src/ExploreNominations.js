@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { reduceArrayToCountDictionary, groupByCriteria } from './helperMethods';
+import { groupByCriteria, subGroupByCriteria } from './helperMethods';
 import Axios from 'axios';
 
 class ExploreNominations extends Component{
@@ -22,7 +22,7 @@ class ExploreNominations extends Component{
         let response = await Axios.get("https://localhost:44366/api/Nominations/");
         let data = response.data;
         let years = data.map(n => n.year);
-        console.log(groupByCriteria(data, "year"));
+        console.log(subGroupByCriteria(groupByCriteria(data, "year"), "awardCategory"));
         // let response = await Axios.get("https://localhost:44366/api/Home/", {headers: {"Access-Control-Allow-Origin": "*"}});
         // console.log(Axios.get("https://localhost:44366/api/Nominations/", {headers: {"Access-Control-Allow-Origin": "*"}}));
         // Axios.get("https://localhost:44366/api/Nominations").then(nominations => console.log(nominations));
