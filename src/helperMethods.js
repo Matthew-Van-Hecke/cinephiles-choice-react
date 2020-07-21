@@ -11,5 +11,19 @@ function reduceArrayToCountDictionary(arrayToReduce) {
     }
     return dict;
 }
+function groupByCriteria(array, criteria){
+    let dict = {};
+    for (let i = 0; i < array.length; i++){
+        let item = array[i];
+        let key = item[criteria];
+        if (dict.hasOwnProperty(key)){
+            dict[key].push(item);
+        }
+        else {
+            dict[key] = [item];
+        }
+    }
+    return dict;
+}
 
-export {reduceArrayToCountDictionary};
+export {reduceArrayToCountDictionary, groupByCriteria};
