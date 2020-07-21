@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { reduceArrayToCountDictionary } from './helperMethods';
 import Axios from 'axios';
 
 class ExploreNominations extends Component{
@@ -18,9 +19,11 @@ class ExploreNominations extends Component{
         )
     }
     async getAllNominations(){
-        // let response = await Axios.get("https://localhost:44366/api/Nominations/");
-        let response = await Axios.get("https://localhost:44366/api/Home/", {headers: {"Access-Control-Allow-Origin": "*"}});
-        console.log(response);
+        let response = await Axios.get("https://localhost:44366/api/Nominations/");
+        let data = response.data;
+        let years = data.map(n => n.year);
+        console.log(reduceArrayToCountDictionary([2017, 2017, 2019, 2018, 2019, 2017, 2018]));
+        // let response = await Axios.get("https://localhost:44366/api/Home/", {headers: {"Access-Control-Allow-Origin": "*"}});
         // console.log(Axios.get("https://localhost:44366/api/Nominations/", {headers: {"Access-Control-Allow-Origin": "*"}}));
         // Axios.get("https://localhost:44366/api/Nominations").then(nominations => console.log(nominations));
     }
