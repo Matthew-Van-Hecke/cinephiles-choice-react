@@ -7,7 +7,7 @@ import './App.css';
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = {allNominations: {}};
+    this.state = {allNominations: {}, yearsAndCategories: {}};
     this.getAllNominations = this.getAllNominations.bind(this);
   }
   componentDidMount(){
@@ -16,8 +16,18 @@ class App extends Component {
   async getAllNominations(){
     let response = await Axios.get("https://localhost:44366/api/Nominations/");
     let sortedResponseData = subGroupByCriteria(groupByCriteria(response.data, "year"), "awardCategory");
-    console.log(sortedResponseData);
-    this.setState({allNominations: sortedResponseData});
+    let yearsAndCategories = this.reduceNominationsToYearsAndCategories(sortedResponseData);
+    console.log(yearsAndCategories);
+    this.setState({allNominations: sortedResponseData, yearsAndCategories: yearsAndCategories});
+  }
+  reduceNominationsToYearsAndCategories(object){
+    let reduced = {};
+    let keys = Object.keys(object);
+    for (let i = 0; i < keys.length; i++){
+      let categoryList = Object.keys(object[keys[i]]);
+      reduced[keys[i]] = categoryList;
+    }
+    return reduced;
   }
   render() {
     return (
