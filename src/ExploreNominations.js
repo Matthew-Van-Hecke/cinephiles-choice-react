@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { groupByCriteria, subGroupByCriteria } from './helperMethods';
+import { groupByCriteria, subGroupByCriteria } from './helperFunctions';
 import Axios from 'axios';
 
 class ExploreNominations extends Component{
