@@ -15,10 +15,19 @@ class App extends Component {
   }
   async getAllNominations(){
     let response = await Axios.get("https://localhost:44366/api/Nominations/");
-    let sortedResponseData = subGroupByCriteria(groupByCriteria(response.data, "year"), "awardCategory");
+    let data = response.data;
+    for (let i = 0; i < data.length; i++){
+      data[i].movie = await this.getMovieById(data[i].movieId);
+    }
+    let sortedResponseData = subGroupByCriteria(groupByCriteria(data, "year"), "awardCategory");
     let yearsAndCategories = this.reduceNominationsToYearsAndCategories(sortedResponseData);
     console.log(yearsAndCategories);
     this.setState({allNominations: sortedResponseData, yearsAndCategories: yearsAndCategories});
+  }
+  async getMovieById(id){
+    let response = await Axios.get("https://localhost:44366/api/Movies/" + id);
+    console.log(response);
+    return response.data;
   }
   reduceNominationsToYearsAndCategories(object){
     let reduced = {};
@@ -33,7 +42,7 @@ class App extends Component {
     return (
       <div className="App container">
         <div className="row">
-          <ExploreNominations />
+          <ExploreNominations yearsAndCategories={this.state.yearsAndCategories} />
         </div>
   
       </div>
